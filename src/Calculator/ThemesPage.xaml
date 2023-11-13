@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculator.ThemesPage"
+             Title="ThemesPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             NavigationPage.HasNavigationBar = "False">
+    <StackLayout VerticalOptions="Center">
+        <Button VerticalOptions="Fill" HorizontalOptions="Fill"
+            Text="Light" Padding="0,25"
+            x:Name="LightTheme"
+            Clicked="ChangeTheme">
+        </Button>
+        <Button VerticalOptions="Fill" HorizontalOptions="Fill"
+            Text="Dark" Padding="0,25"
+            x:Name="DarkTheme"
+            Clicked="ChangeTheme">
+        </Button>
+        <Button VerticalOptions="Fill" HorizontalOptions="Fill"
+            Text="Red" Padding="0,25"
+            x:Name="RedTheme"
+            Clicked="ChangeTheme">
+        </Button>
+        <Button VerticalOptions="Fill" HorizontalOptions="Fill"
+            Text="Pink" Padding="0,25"
+            x:Name="PinkTheme"
+            Clicked="ChangeTheme">
+        </Button>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculator.Resources.PinkTheme">
+    
+    <Color x:Key="PageBackgroundColor">LightPink</Color>
+    <Color x:Key="FlyoutBackgroundColor">Navy</Color>
+    <Color x:Key="FlyoutSelectedColor">SlateBlue</Color>
+    <Color x:Key="FlyoutTextColor">White</Color>
+    <Color x:Key="NavigationBarColor">Pink</Color>
+    <Color x:Key="PrimaryColor">DeepPink</Color>
+    <Color x:Key="SecondaryColor">HotPink</Color>
+    <Color x:Key="PrimaryTextColor">Black</Color>
+    <Color x:Key="SecondaryTextColor">DimGray</Color>
+    <Color x:Key="TertiaryTextColor">Gray</Color>
+    <Color x:Key="TransparentColor">Transparent</Color>
+</ResourceDictionary>

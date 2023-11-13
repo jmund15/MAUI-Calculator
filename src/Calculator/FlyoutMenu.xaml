@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculator.FlyoutMenu"
+             Title="FlyoutMenu"
+             xmlns:local="clr-namespace:Calculator"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             Padding="0" BackgroundColor="{DynamicResource FlyoutBackgroundColor}">
+    
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                Spacing="10" Margin="10,20">
+
+        <Label Style="{StaticResource FlyoutLabel}"
+            FontSize="Large"
+            FontAttributes="Bold" VerticalOptions="Center"
+            Text="Calculator App"/>
+
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Line X2="250" Stroke="{DynamicResource PrimaryColor}" HorizontalOptions="CenterAndExpand"/>
+
+            <CollectionView x:Name="flyoutMenuOptions"
+            x:FieldModifier="public"
+            SelectionMode="Single">
+               
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Style="{StaticResource FlyoutCollection}" 
+                            Padding="5,10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Style="{StaticResource FlyoutLabel}"
+                                Grid.Column="1"
+                                Margin="20,0"
+                                Text="{Binding Title}"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Line X2="250" Stroke="{DynamicResource PrimaryColor}" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+
+        <StackLayout VerticalOptions="EndAndExpand">
+            <Label Style="{StaticResource FlyoutLabel}"
+                Text="By Jacob Mund"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

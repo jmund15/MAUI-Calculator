@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculator.ExercisePage"
+             Title="ExercisePage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             NavigationPage.HasNavigationBar = "False">
+
+    <Grid Padding="50" RowSpacing="25" ColumnSpacing="50"
+      RowDefinitions="*,*,*,*"
+      ColumnDefinitions="*,*,*">
+        <!--<Button Text="Generate New" Grid.Row="2" Grid.Column="1"
+            Clicked="OnNewExercises" />-->
+        <Label x:Name="CurrentId" Style="{StaticResource MediumLabelStyle}" Grid.ColumnSpan="2"
+               Grid.Row="0" Grid.Column="0" HorizontalOptions="Start"/>
+
+        <Label x:Name="CurrentScore" Style="{StaticResource MediumLabelStyle}" Grid.ColumnSpan="2"
+               Grid.Row="0" Grid.Column="1" HorizontalOptions="End"/>
+        
+        <Label x:Name="Equation" Style="{StaticResource LargeLabelStyle}" 
+               Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+
+        <Button x:Name="Answer1" Grid.Row="2" Grid.Column="0"
+                Clicked="OnAnserSelect"/>
+        <Button x:Name="Answer2" Grid.Row="2" Grid.Column="1"
+                Clicked="OnAnserSelect"/>
+        <Button x:Name="Answer3" Grid.Row="2" Grid.Column="2"
+                Clicked="OnAnserSelect"/>
+
+        <Button x:Name="Retry" Text="Try Again" Grid.Row="3" Grid.Column="0"
+                Clicked="OnRetry"/>
+        <Button x:Name="Next" Text="Skip to Next" Grid.Row="3" Grid.Column="2"
+                Clicked="OnNext"/>
+
+
+    </Grid>
+
+
+
+
+</ContentPage>

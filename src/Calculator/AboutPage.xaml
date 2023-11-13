@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculator.AboutPage"
+             Title="AboutPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             NavigationPage.HasNavigationBar = "False">
+    
+    <StackLayout Padding="25,50">
+        <Label 
+            Text="Team Members:"
+            FontSize="Large" FontAttributes="Bold"
+            VerticalOptions="Start" HorizontalOptions="Start" />
+        <Line X2="1000" Stroke="{DynamicResource PrimaryColor}" HorizontalOptions="CenterAndExpand"/>
+        <Label Padding="25,25"
+            Text="Jacob Mund" FontSize="Large"
+            VerticalOptions="Start" HorizontalOptions="Start" />
+    </StackLayout>
+</ContentPage>
