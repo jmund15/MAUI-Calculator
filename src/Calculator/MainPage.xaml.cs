@@ -134,6 +134,7 @@ public partial class MainPage : ContentPage
             currentState = -1;
             currentEntry = string.Empty;
 
+            App.EquationViewModel.AddNewEquation(CurrentCalculation.Text, resultText.Text);
         }
     }
 

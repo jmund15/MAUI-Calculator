@@ -137,7 +137,7 @@ public partial class ScientificPage : ContentPage
 
             //double result = Calculator.Calculate(firstNumber, secondNumber, mathOperator);
             double result = Calculator.NewCalculate(fullEquation);
-
+            
             //this.CurrentCalculation.Text = $"{firstNumber} {mathOperator} {secondNumber}";
 
             this.resultText.Text = result.ToTrimmedString(decimalFormat);
@@ -146,6 +146,7 @@ public partial class ScientificPage : ContentPage
             currentState = -1;
             currentEntry = string.Empty;
 
+            App.EquationViewModel.AddNewEquation(CurrentCalculation.Text, resultText.Text);
         }
     }
 

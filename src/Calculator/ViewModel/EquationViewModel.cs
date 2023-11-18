@@ -1,8 +1,12 @@
-﻿
+﻿using SQLite;
+
 namespace Calculator.ViewModel
 {
     public partial class EquationViewModel : ObservableObject
     {
+        private SQLiteAsyncConnection _conn;
+        private string _dbPath;
+
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsNotBusy))]
         bool isBusy;
@@ -12,46 +16,61 @@ namespace Calculator.ViewModel
 
         public bool IsNotBusy => !IsBusy;
 
-        public ObservableCollection<Equation> Equations { get; } = new();
-        public EquationViewModel()
+        public ObservableCollection<Equation> Equations { get; private set; } = new();
+        public EquationViewModel(string dbPath)
         {
-            GetEquationsAsync();
+            _dbPath = dbPath;
         }
-
-        [RelayCommand]
-        async Task GetEquationsAsync()
+        public async Task Init(bool reset = false)
         {
-            if (IsBusy)
+            if (_conn != null && !reset)
                 return;
 
+            _conn = new SQLiteAsyncConnection(_dbPath);
+            await _conn.CreateTableAsync<Equation>();
+        }
+
+        public async Task UpdateEquations()
+        {
             try
             {
-                IsBusy = true;
-                var equations = new List<Equation> { new Equation(1, "1+1", "2"), new Equation(2, "1-1", "0") }; //sqlite pull here
-
-                if (Equations.Count != 0)
-                    Equations.Clear();
-
-                foreach (var equation in equations)
-                {
-                    Equations.Add(equation);
-                }
-                Trace.WriteLine("Sucessfully got equations");
+                await Init();
+                Equations = new ObservableCollection<Equation>(await _conn.Table<Equation>().ToListAsync());
+                //Trace.WriteLine(Equations[Equations.Count - 1].Expression);
             }
             catch (Exception ex)
             {
-                Trace.WriteLine($"Unable to get equations: {ex.Message}");
-                //await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+                //StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+                Trace.WriteLine(string.Format("Failed to retrieve data. {0}", ex.Message));
             }
-            finally
-            {
-                IsBusy = false;
-            }
-        }   
-
-        async Task ClearEquationAsync()
+        }
+        public async Task AddNewEquation(string expression, string answer)
         {
+            int result = 0;
+            try
+            {
+                await Init();
 
+                // basic validation to ensure a name was entered
+                if (string.IsNullOrEmpty(expression) || string.IsNullOrEmpty(answer)) {
+                    throw new Exception("Valid expression/answer required");
+                }
+
+                result = await _conn.InsertAsync(new Equation { Id = Equations.Count + 1, Expression = expression, Answer = answer });
+                await UpdateEquations();
+            }
+            catch (Exception ex)
+            {
+                //StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+                Trace.WriteLine(string.Format("Failed to add equation. {0}", ex.Message));
+            }
+        }
+        public async Task ClearEquationAsync()
+        {
+            await Init();
+            await _conn.DeleteAllAsync<Equation>();
+            Equations.Clear();
+            await _conn.ExecuteAsync("delete from sqlite_sequence where name = 'Equation';");
         }
     }
 }
