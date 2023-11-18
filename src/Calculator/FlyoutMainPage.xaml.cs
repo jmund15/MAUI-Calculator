@@ -34,6 +34,9 @@ public partial class FlyoutMainPage : FlyoutPage
                 case "Themes":
                     Detail = new NavigationPage(new ThemesPage());
                     break;
+                case "History":
+                    Detail = new NavigationPage(new HistoryPage());
+                    break;
                 case "Exercises":
                     Detail = new NavigationPage(new ExercisePage());
                     break;

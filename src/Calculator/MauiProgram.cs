@@ -18,6 +18,8 @@ public static class MauiProgram
 
 		builder.Logging.AddDebug();
 
+        builder.Services.AddSingleton<EquationViewModel>();
+
         return builder.Build();
 	}
 }

@@ -22,6 +22,7 @@ public partial class FlyoutMenu : ContentPage
         flyoutMenuItems.Add(new FlyoutMenuItem("Basic Calculator"));
         flyoutMenuItems.Add(new FlyoutMenuItem("Scientific Calculator"));
         flyoutMenuItems.Add(new FlyoutMenuItem("Themes"));
+        flyoutMenuItems.Add(new FlyoutMenuItem("History"));
         flyoutMenuItems.Add(new FlyoutMenuItem("Exercises"));
         flyoutMenuOptions.ItemsSource = flyoutMenuItems;
     }
