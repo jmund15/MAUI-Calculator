@@ -1,6 +1,4 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/bKIb5qM-)
-
-# CS797 Project 4 - SQLite Database
+# CS797 Project - MAUI Calculator Expansion
 ## Introduction
 This project is based off of the sample MAUI calculator app with added functionality and UI to support SQLite.
 
